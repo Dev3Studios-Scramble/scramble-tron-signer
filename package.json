@@ -1,0 +1,81 @@
+{
+  "name": "@scramble/signer-tron",
+  "version": "0.0.5",
+  "description": "Tron chain signer",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean",
+    "lint": "prettier --write .",
+    "test": "ts-mocha -p tsconfig.json tests/**/*.test.ts",
+    "test:coverage": "nyc npm run test"
+  },
+  "engines": {
+    "node": ">=14.15.0"
+  },
+  "dependencies": {
+    "@scramble/utils": "workspace:^",
+    "bip39": "^3.1.0",
+    "chai": "^4.3.7",
+    "ethereum-cryptography": "^1.2.0",
+    "ethereumjs-util": "^7.1.5",
+    "hdkey": "^2.1.0",
+    "tronweb": "file:../../tronweb-scramble.tgz",
+    "tweetnacl": "^1.0.3",
+    "tweetnacl-util": "^0.15.1"
+  },
+  "devDependencies": {
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
+    "@scramble/types": "workspace:^",
+    "@types/chai": "^4.3.5",
+    "@types/hdkey": "^2.0.1",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^18.16.18",
+    "@typescript-eslint/eslint-plugin": "^5.60.0",
+    "@typescript-eslint/parser": "^5.60.0",
+    "eslint": "^8.43.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-module-resolver": "^1.5.0",
+    "mocha": "^10.2.0",
+    "nyc": "^15.1.0",
+    "prettier": "^2.8.8",
+    "ts-mocha": "^10.0.0",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
+    "tsup": "^6.7.0",
+    "typescript": "^4.9.5",
+    "typescript-eslint": "0.0.1-alpha.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wavect/ScrambleWallet/tree/main/packages/signers/ethereum"
+  },
+  "keywords": [],
+  "author": "kvhnuke",
+  "license": "MIT",
+  "nyc": {
+    "extends": "@istanbuljs/nyc-config-typescript",
+    "check-coverage": true,
+    "all": true,
+    "include": [
+      "src/**/!(*.test.*).[tj]s?(x)"
+    ],
+    "exclude": [
+      "src/_tests_/**/*.*"
+    ],
+    "reporter": [
+      "html",
+      "lcov",
+      "text",
+      "text-summary"
+    ],
+    "report-dir": "coverage"
+  }
+}
